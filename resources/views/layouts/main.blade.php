@@ -16,7 +16,7 @@
         @include('includes.nav')
         <!-- Navbar End -->
 @yield('header')
-
+@yield('404')
         <!-- Footer Start -->
         @include('includes.footer')
         <!-- Footer End -->
