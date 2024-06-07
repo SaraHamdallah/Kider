@@ -2,7 +2,7 @@
 
 @section('header')
 <!-- Carousel Start -->
-@include('includes.carousel')
+        @include('includes.carousel')
         <!-- Carousel End -->
 
 

@@ -11,7 +11,6 @@ class Frontpages extends Controller
         return view ('home', compact('title'));
     }
 
-
     public function about(){
         $title = "About";
         return view ('about', compact('title'));
@@ -55,5 +54,18 @@ class Frontpages extends Controller
     public function error(){
         $title = "404 Error";
         return view ('error', compact('title'));
+    }
+
+
+    public function dash(){
+        return view ('dash');
+    }
+
+    public function register(){
+        return view ('register');
+    }
+
+    public function login(){
+        return view ('login');
     }
 }
