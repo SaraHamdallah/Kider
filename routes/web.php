@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontpages;
+use App\Http\Controllers\DashBoardController;
 
 // Route::get('/', function () {
 //     return view('test');
@@ -22,6 +23,11 @@ Route::get('testimonial',[Frontpages::class,'testimonial'])->name('page/testimon
 Route::get('error', [Frontpages::class, 'error'])->name('page/error');
 
 
-Route::get('dashb',[Frontpages::class,'dash'])->name('dash');
-Route::get('register',[Frontpages::class,'register'])->name('register');
-Route::get('login',[Frontpages::class,'login'])->name('login');
+
+Route::get('dashb',[DashBoardController::class,'dashb'])->name('dash');
+Route::get('register', [DashBoardController::class, 'create'])->name('register');;
+Route::post('register', [DashBoardController::class, 'store']);
+Route::get('login', [DashBoardController::class, 'loginForm'])->name('login');
+Route::post('login', [DashBoardController::class, 'login']);
+
+Route::get('classes',[DashBoardController::class,'classes'])->name('classes');

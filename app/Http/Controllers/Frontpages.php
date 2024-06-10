@@ -56,16 +56,4 @@ class Frontpages extends Controller
         return view ('error', compact('title'));
     }
 
-
-    public function dash(){
-        return view ('dash');
-    }
-
-    public function register(){
-        return view ('register');
-    }
-
-    public function login(){
-        return view ('login');
-    }
 }

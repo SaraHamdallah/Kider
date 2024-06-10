@@ -22,10 +22,15 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form method="POST" action="{{ route('login') }}" class="row g-3 needs-validation" novalidate>
+                  @csrf  <!-- creating input hidden token (secret code) -->
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
+                      <p style="color:red">
+                        @error('username')
+                          {{ $message }}
+                        @enderror
+                      </p>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                         <input type="text" name="username" class="form-control" id="yourUsername" required>
@@ -35,6 +40,11 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
+                      <p style="color:red">
+                        @error('password')
+                          {{ $message }}
+                        @enderror
+                      </p>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>

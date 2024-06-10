@@ -22,21 +22,37 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form method="POST" action="{{ route('register') }}" class="row g-3 needs-validation" novalidate>
+                  @csrf  <!-- creating input hidden token (secret code) -->
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
+                      <p style="color:red">
+                          @error('name')
+                            {{ $message }}
+                          @enderror
+                        </p>
                       <input type="text" name="name" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your name!</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
+                      <p style="color:red">
+                          @error('email')
+                            {{ $message }}
+                          @enderror
+                        </p>
                       <input type="email" name="email" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
+                      <p style="color:red">
+                          @error('username')
+                            {{ $message }}
+                          @enderror
+                        </p>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                         <input type="text" name="username" class="form-control" id="yourUsername" required>
@@ -46,14 +62,24 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
+                      <p style="color:red">
+                          @error('password')
+                            {{ $message }}
+                          @enderror
+                        </p>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="terms" type="checkbox" value="1" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                        <p style="color:red">
+                          @error('terms')
+                            {{ $message }}
+                          @enderror
+                        </p>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
@@ -61,7 +87,7 @@
                       <button class="btn btn-primary w-100" type="submit">Create Account</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="{{ route('register') }}">Log in</a></p>
                     </div>
                   </form>
 
