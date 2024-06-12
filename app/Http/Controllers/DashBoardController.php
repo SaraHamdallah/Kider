@@ -13,10 +13,10 @@ class DashBoardController extends Controller
     public function dashb(){
         return view ('dash');
     }
-    public function classes(){
-        $title = "classes";
-        return view ('classesTable', compact('title'));
-    }
+    // public function users(){
+    //     $title = "users";
+    //     return view ('usersTable', compact('title'));
+    // }
 
 
     /**

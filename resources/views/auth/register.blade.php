@@ -1,3 +1,6 @@
+@extends('layouts.dashMain')
+
+@section('content')
 <main>
     <div class="container">
 
@@ -7,7 +10,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="{{ route('dash') }}" class="logo d-flex align-items-center w-auto">
+                <a href="{{ route('login') }}" class="logo d-flex align-items-center w-auto">
                   <img src="{{asset('dash/assets/img//logo.png')}}" alt="">
                   <span class="d-none d-lg-block">NiceAdmin</span>
                 </a>
@@ -25,69 +28,53 @@
                   <form method="POST" action="{{ route('register') }}" class="row g-3 needs-validation" novalidate>
                   @csrf  <!-- creating input hidden token (secret code) -->
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
+                      <label for="yourName" class="form-label">{{ __('Name') }}</label>
                       <p style="color:red">
                           @error('name')
                             {{ $message }}
                           @enderror
                         </p>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="yourName" value="{{ old('name') }}" required>
                       <div class="invalid-feedback">Please, enter your name!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
+                      <label for="yourEmail" class="form-label">{{ __('Email Address') }}</label>
                       <p style="color:red">
                           @error('email')
                             {{ $message }}
                           @enderror
                         </p>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="yourEmail" value="{{ old('email') }}" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <p style="color:red">
-                          @error('username')
-                            {{ $message }}
-                          @enderror
-                        </p>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
-                      </div>
-                    </div>
+
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
+                      <label for="yourPassword" class="form-label">{{ __('Password') }}</label>
                       <p style="color:red">
                           @error('password')
                             {{ $message }}
                           @enderror
                         </p>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="1" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <p style="color:red">
-                          @error('terms')
-                            {{ $message }}
-                          @enderror
-                        </p>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
+                    <div class="row mb-3">
+                      <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                      <div class="col-md-6">
+                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                       </div>
                     </div>
+
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit">{{ __('Register') }}</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="{{ route('register') }}">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
                     </div>
                   </form>
 
@@ -110,3 +97,5 @@
 
     </div>
   </main>
+
+@endsection

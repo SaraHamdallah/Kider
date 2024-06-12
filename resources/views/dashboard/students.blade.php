@@ -1,15 +1,15 @@
-@extends('layouts.dashMain')
+@extends('./layouts.dashMain')
 
 @section('header')
-    @include('includes/dashIncludes.header')
-    @include('includes/dashIncludes.sidebar')
+    @include('./includes/dashIncludes.header')
+    @include('./includes/dashIncludes.sidebar')
 @endsection
 
 
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Student Table</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -25,31 +25,32 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
+              <h5 class="card-title">Student Table</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th>Class name</th>
-                    <th>Teacher</th>
-                    <th>Price</th>
-                    <th>Age</th>
-                    <th>Time</th>
-                    <th data-type="time">Time</th>
-                    <th>Capacity</th>
+                    <th>name</th>
+                    <th>birth </th>
+                    <th>classes </th>
+                    <th>active</th>
+                    <th>update</th>
+                    <th>delete</th>
+                    <th data-type="date">created at</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Jhon Doe</td>
-                    <td>9958</td>
-                    <td>$99</td>
-                    <td>3-5 Years</td>
+                    <td>1/1/2000</td>
+                    <td>classes</td>
+                    <td>yes</td>
                     <td>9-10 AM</td>
                     <td>9-10 AM</td>
-                    <td>30 Kids</td>
+                    <td>1/1/2006</td>
                   </tr>
                 </tbody>
               </table>
@@ -65,6 +66,5 @@
   </main><!-- End #main -->
 
 @section('footer')
-    @include('includes/dashIncludes.footer')
-    @include('includes/dashIncludes.footerJs')
+    @include('./includes/dashIncludes.footer')
 @endsection

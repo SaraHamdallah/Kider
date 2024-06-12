@@ -3,7 +3,7 @@
                 <h1 class="display-2 text-white animated slideInDown mb-4">{{ $title }}</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('homePage') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">{{ $title }}</li>
                     </ol>

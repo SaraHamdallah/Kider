@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class Frontpages extends Controller
 {
-    public function home(){
+    public function homePage(){
         $title = "Kider";
-        return view ('home', compact('title'));
+        return view ('homePage', compact('title'));
     }
 
     public function about(){

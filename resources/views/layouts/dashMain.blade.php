@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    @include('includes/dashIncludes.head')
-</head>
+@include('includes/dashIncludes.head')
 
 <body>
 
     @yield('header')
-    @yield('login')
-    @yield('register')
+    @yield('content')
     @yield('footer')
   
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
