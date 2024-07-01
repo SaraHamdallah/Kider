@@ -4,12 +4,12 @@
     @include('./includes/dashIncludes.header')
     @include('./includes/dashIncludes.sidebar')
 @endsection
-
+ 
 
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Student Table</h1>
+      <h1>hjgjhgjhg</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -33,33 +33,38 @@
                 <thead>
                   <tr>
                     <th>class name</th>
-                    <th>teacher </th>
                     <th>price </th>
                     <th>age</th>
                     <th>start time</th>
                     <th>capacity</th>
-                    <th>image</th>
-                    <th>students</th>
+                    <th>students </th>
                     <th>publish</th>
-                    <th>delete</th>
-                    <th data-type="date">created at</th>
+                    <th>image</th>
                     
+            
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Arts</td>
-                    <td>Jhon Doe</td>
-                    <td>100$</td>
-                    <td>10</td>
-                    <td>9-10 AM</td>
-                    <td>15</td>
-                    <td>image</td>
-                    <td>students</td>
-                    <td>yes</td>
-                    <td>delete</td>
-                    <td>1/1/2006</td>
+                    <td>{{ $course->className }}</td>
+                    <td>{{ $course->price }}</td>
+                    <td>{{ $course->age }}</td>
+                    <td>{{ $course->startTime }}</td>
+                    <td>{{ $course->capacity }}</td>
+                    <td>
+                      <ul>
+                        @foreach($course->students as $student)
+                          <li>{{ $student->studentName }}</li>
+                        @endforeach
+                      </ul>
+                    </td>
+                    <td>{{ $course->publish ? 'Yes' : 'No'}}</td>
+                    <td>Image: <img src="{{ asset('assets/images/' . $course->image) }}" alt="{{ $course->className }}"></td>
+                    
+                    <td>
+                    </td>
                   </tr>
+              
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

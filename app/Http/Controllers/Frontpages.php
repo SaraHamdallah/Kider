@@ -3,22 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\Teacher;
+use App\Models\Student;
+
 
 class Frontpages extends Controller
+
 {
     public function homePage(){
         $title = "Kider";
-        return view ('homePage', compact('title'));
+        $courses = Course::take(3)->where('publish', true)->get();          // Fetch only the published courses
+        //dd($courses->count());
+        $teachers = Teacher::take(3)->get();
+        return view('Kider', compact('title', 'courses', 'teachers'));
     }
 
     public function about(){
         $title = "About";
-        return view ('about', compact('title'));
+        return view ('about', compact('title')); 
     }
 
-    public function classes(){
+    public function classes() {
         $title = "Classes";
-        return view ('classes', compact('title'));
+        # Fetch only 3 and the published courses
+    $courses = Course::take(3)->where('publish', true)->get();
+        return view('classes', compact('title', 'courses'));
     }
 
     public function contact(){
@@ -33,8 +43,10 @@ class Frontpages extends Controller
 
     public function team(){
         $title = "Teachers";
-        return view ('team', compact('title'));
-    }
+        // Fetch only 3 teachers
+        $teachers = Teacher::take(3)->get();
+        return view('team', compact('title', 'teachers'));
+        }
 
     public function call(){
         $title = "Become A Teachers";

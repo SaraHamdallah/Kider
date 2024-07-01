@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registrations', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email', 100)->unique();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->boolean('terms')->default(false);
-            $table->timestamps();
-        });
+        // Schema::create('registrations', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('email', 100)->unique();
+        //     $table->string('username')->unique();
+        //     $table->string('password');
+        //     //$table->boolean('terms')->default(false);
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations');
+        // Schema::dropIfExists('registrations');
     }
 };

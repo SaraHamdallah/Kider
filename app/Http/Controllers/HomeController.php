@@ -3,43 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailToUser;
+
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
-    { 
-        return view('home');
+    {
+       
+        return view('dashboard/home');    #return view('name of view', compact('name of variable'));
     }
 
 
-    public function teachers(){
-        $title = "teachers";
-        return view ('dashboard/teachers', compact('title'));
-    }
-
-    public function students(){
-        $title = "students";
-        return view ('dashboard/students', compact('title'));
-    }
-
-    public function classes(){
-        $title = "classes";
-        return view ('dashboard/classes', compact('title'));
+    public function sendEmail(Request $request){
+        
+        $data = User::findOrFail(1)->toArray();  // get and put the data of client id 1 in array
+        $data['theMessage'] = 'my message';   //added the message to the $data array
+        // dd($data);
+        Mail::to($data['email'])->send(       //send the email to the client email
+            new EmailToUser($data)  // now will go to sendMail with array
+    );
+    return "mail sent";
     }
 
 }

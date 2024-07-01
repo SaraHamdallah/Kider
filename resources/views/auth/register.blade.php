@@ -49,7 +49,19 @@
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
-
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">{{ __('Username') }}</label>
+                      <p style="color:red">
+                        @error('username')
+                          {{ $message }}
+                        @enderror
+                      </p>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="username" class="form-control" id="yourUsername" value="{{ old('username') }}" required>
+                        <div class="invalid-feedback">Please choose a username.</div>
+                      </div>
+                    </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">{{ __('Password') }}</label>
@@ -62,11 +74,19 @@
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    <div class="row mb-3">
-                      <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                    <div class="col-12">
+                      <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
 
-                      <div class="col-md-6">
+                      <div class="col-12">
                           <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" name="terms" type="checkbox" value="{{ old('terms') }}" id="acceptTerms" required>
+                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
 

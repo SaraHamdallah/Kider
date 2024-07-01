@@ -29,13 +29,15 @@
                   @csrf  <!-- creating input hidden token (secret code) -->
                   
                   <div class="col-12">
-                    <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                    <label for="login" class="form-label">{{ __('Email or Username') }}</label>
                       <p style="color:red">
-                        @error('password')
+                      @error('login')
                           {{ $message }}
-                        @enderror
+                        @enderror  
+                       
                       </p>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <!--<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>-->
+                    <input id="login" type="text" class="form-control @error('login') is-invalid @enderror @error('username') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
                   </div>
                   
 

@@ -20,9 +20,16 @@
         @include('includes.call')
         <!-- Call To Action End -->
 
-
         <!-- Classes Start -->
-        @include('includes.classes')
+            @include('includes.classes')
+        <!-- {{-- Debugging: Output the courses --}}
+                @if($courses->isEmpty())
+                    <p>No courses found.</p>
+                @else
+                    @foreach ($courses as $course)
+                        <p>{{ $course->className }}</p>
+                    @endforeach
+                @endif -->
         <!-- Classes End -->
 
 

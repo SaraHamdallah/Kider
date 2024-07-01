@@ -41,13 +41,28 @@
   </li><!-- End Components Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+    <a class="nav-link collapsed {{ request()->is('dashboard/addTeachers') || request()->is('dashboard/addStudents') || request()->is('dashboard/addCourses') || request()->is('dashboard/addCourseStudent') ? 'active' : '' }}" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
-    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
       <li>
-        <a href="forms-elements.html">
-          <i class="bi bi-circle"></i><span>Form Elements</span>
+        <a href="{{ route('addCourses') }}">
+          <i class="bi bi-circle"></i><span>Add courses</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('addTeachers') }}">
+          <i class="bi bi-circle"></i><span>Add Teachers</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('addStudents') }}">
+          <i class="bi bi-circle"></i><span>Add Students</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('addCourseStudent') }}">
+          <i class="bi bi-circle"></i><span>Add student to class</span>
         </a>
       </li>
     </ul>
@@ -58,9 +73,15 @@
       <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-    <li>
+      <li>
         <a href="{{ route('teachers') }}">
           <i class="bi bi-circle"></i><span>Teacher Table</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('courses') }}">
+          <i class="bi bi-circle"></i><span>Classes Table</span>
         </a>
       </li>
 
@@ -70,14 +91,38 @@
         </a>
       </li>
 
+    </ul>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#trashed-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-layout-text-window-reverse"></i><span>Trashed</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="trashed-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="{{ route('classes') }}">
-          <i class="bi bi-circle"></i><span>Classes Table</span>
+        <a href="{{ route('trashCourse') }}">
+          <i class="bi bi-circle"></i><span>Trashed classes Table</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('trashTeachers') }}">
+          <i class="bi bi-circle"></i><span>Trashed teachers Table</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('trashStudents') }}">
+          <i class="bi bi-circle"></i><span>Trashed students Table</span>
         </a>
       </li>
 
     </ul>
-  </li><!-- End Tables Nav -->
+  </li>
+  
+  
+  
+  <!-- End Tables Nav -->
 
   <!-- End Charts Nav -->
 
@@ -109,14 +154,14 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="{{ route('register') }}">
       <i class="bi bi-card-list"></i>
-      <span>Register</span>
+      <span>Add User</span>
     </a>
   </li><!-- End Register Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="{{ route('login') }}">
       <i class="bi bi-box-arrow-in-right"></i>
-      <span>Login</span>
+      <span>Show Users</span>
     </a>
   </li><!-- End Login Page Nav -->
 

@@ -9,7 +9,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Student Table</h1>
+      <h1>{{$title}}</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -34,24 +34,32 @@
                   <tr>
                     <th>name</th>
                     <th>birth </th>
-                    <th>classes </th>
-                    <th>active</th>
-                    <th>update</th>
-                    <th>delete</th>
                     <th data-type="date">created at</th>
-                    
+                    <th>show</th>
+                    <th>update</th>
+                    <th>delete</th>                    
                   </tr>
                 </thead>
+
                 <tbody>
+                @foreach ($students  as $student)
                   <tr>
-                    <td>Jhon Doe</td>
-                    <td>1/1/2000</td>
-                    <td>classes</td>
-                    <td>yes</td>
-                    <td>9-10 AM</td>
-                    <td>9-10 AM</td>
-                    <td>1/1/2006</td>
+                    <td>{{ $student->studentName }}</td>
+                    <td>{{ $student->birthDate }}</td>
+                    <td>{{ $student->created_at }}</td>
+
+                    <td><a href="{{ route('showStudent', $student->id) }}">Show</a></td>
+                    <td><a href="{{ route('editStudent', $student->id) }}">Edit</a></td>
+                    <td>
+                      <form action="{{ route('delStudent', $student->id) }}" method="post">
+                        @csrf  <!-- directive is used for protecting against cross-site request forgery. This ensures your forms are secure.-->
+                        @method('DELETE') <!--directive is used to spoof the HTTP DELETE method since HTML forms only support GET and POST.-->
+                        <input type="hidden" value="{{ $student->id }}" name="id">
+                        <input type="submit" value="Delete">
+                      </form>
+                    </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
